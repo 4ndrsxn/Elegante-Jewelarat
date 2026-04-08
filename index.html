@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Elegance Jewelers | One Page • Smooth Scroll</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #000000;   /* deep black background */
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #f0f0f0;
+            line-height: 1.5;
+        }
+
+        /* ========== GLOBAL STYLES ========== */
+        a {
+            text-decoration: none;
+            color: #f0f0f0;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #c7a84b;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 2rem;
+        }
+
+        /* ========== STICKY NAVIGATION (SMOOTH ANCHOR) ========== */
+        nav {
+            background: #0a0a0a;
+            border-bottom: 1px solid #2a2a2a;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            background-color: rgba(10, 10, 10, 0.95);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            font-weight: 300;
+            color: #c7a84b;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            list-style: none;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #c7a84b;
+            border-bottom-color: #c7a84b;
+        }
+
+        /* ========== HERO SECTION (HOME) ========== */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem 6rem;
+            background: radial-gradient(circle at 30% 10%, #1a1308, #000000);
+            border-bottom: 1px solid #2c2c2c;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #c7a84b;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 1.2rem auto;
+            color: #ccc;
+        }
+
+        .btn-gold {
+            display: inline-block;
+            background: #c7a84b;
+            color: #000;
+            padding: 12px 32px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 40px;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover {
+            background: #e0b85c;
+            transform: scale(1.02);
+            color: #000;
+        }
+
+        /* ========== SECTION TITLES ========== */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin: 2rem 0 1rem;
+            letter-spacing: 2px;
+            color: #c7a84b;
+            border-bottom: 1px solid #2c2c2c;
+            display: inline-block;
+            width: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .title-wrapper {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* ========== PRODUCT GRID ========== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: #111111;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            border: 1px solid #2a2a2a;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.8);
+            border-color: #c7a84b40;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background: #1e1e1e;
+            display: block;
+        }
+
+        .card-info {
+            padding: 1.2rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #f5e7c8;
+        }
+
+        .card-price {
+            color: #c7a84b;
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        /* ========== SERVICES GRID ========== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            background: #0c0c0c;
+            padding: 2rem;
+            border-radius: 24px;
+            text-align: center;
+            border: 1px solid #2a2a2a;
+            transition: 0.2s;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #c7a84b;
+            margin-bottom: 1rem;
+        }
+
+        /* ========== ACCESSORIES BADGE ========== */
+        .accessory-badge {
+            background: #1f1a0e;
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            color: #c7a84b;
+            margin-bottom: 0.6rem;
+        }
+
+        /* ========== GEMSTONE HORIZONTAL ROW ========== */
+        .gemstone-strip {
+            background: #0c0c0c;
+            padding: 2rem 1rem;
+            margin: 2rem 0;
+            border-radius: 40px;
+            border: 1px solid #2a2a2a;
+            overflow-x: auto;
+        }
+        .gemstone-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .gem-item {
+            text-align: center;
+            min-width: 100px;
+            transition: transform 0.2s;
+        }
+        .gem-item:hover {
+            transform: translateY(-5px);
+        }
+        .gem-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #c7a84b;
+            background: #1e1e1e;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .gem-name {
+            margin-top: 0.6rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #e6cfa0;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 700px) {
+            .gemstone-container { gap: 1rem; }
+            .gem-img { width: 70px; height: 70px; }
+        }
+
+        /* ========== PERSONALIZE FORM ========== */
+        .personalize-form {
+            background: #0c0c0c;
+            border-radius: 28px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid #2f2f2f;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #c7a84b;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: #1a1a1a;
+            border: 1px solid #3a3a3a;
+            border-radius: 12px;
+            color: #fff;
+            font-family: inherit;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #c7a84b;
+        }
+        .preview-message {
+            background: #1a1308;
+            padding: 1rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* ========== CONTACT SECTION ========== */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+        .contact-card {
+            background: #0f0f0f;
+            border-radius: 24px;
+            padding: 2rem;
+            flex: 1;
+            min-width: 240px;
+            text-align: center;
+            border: 1px solid #2c2c2c;
+        }
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .contact-detail {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #f5e7c8;
+        }
+        .map-placeholder {
+            background: #161616;
+            padding: 1.5rem;
+            border-radius: 28px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* ========== SECTION DIVIDERS & SPACING ========== */
+        .page-section {
+            scroll-margin-top: 85px;  /* ensures nav doesn't hide title */
+        }
+        footer {
+            background: #050505;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid #222;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        @media (max-width: 750px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .page-section {
+                scroll-margin-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== ONE PAGE NAVIGATION (SMOOTH SCROLL) ==================== -->
+<nav>
+    <div class="logo">⚜️ ELEGANCE</div>
+    <ul class="nav-links">
+        <li><a href="#home" class="nav-link" data-section="home">HOME</a></li>
+        <li><a href="#accessories" class="nav-link" data-section="accessories">ACCESSORIES</a></li>
+        <li><a href="#services" class="nav-link" data-section="services">SERVICES</a></li>
+        <li><a href="#personalize" class="nav-link" data-section="personalize">PERSONALIZE</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">CONTACT</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- ==================== HOME SECTION ==================== -->
+    <section id="home" class="page-section">
+        <div class="hero">
+            <h1>ELEGANCE JEWELERS</h1>
+            <p>Timeless craftsmanship meets modern sophistication — each piece tells a story of passion and brilliance on a black canvas.</p>
+            <a href="#accessories" class="btn-gold">DISCOVER COLLECTION</a>
+        </div>
+        <div class="container">
+            <div class="title-wrapper"><h2 class="section-title">🌟 ICONIC JEWELRY</h2></div>
+            <div id="home-product-grid" class="product-grid"></div>
+            <!-- Gemstone row (emerald, diamond, sapphire, ruby, amethyst) -->
+            <div id="home-gemstone-row" class="gemstone-strip"></div>
+            <div style="text-align: center; margin: 2rem 0 1rem;">
+                <p style="color:#c7a84b;">“Elegance is not just what you wear, it is who you are.”</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ACCESSORIES SECTION ==================== -->
+    <section id="accessories" class="page-section">
+        <div class="container">
+            <div class="title-wrapper"><h2 class="section-title">🕰️ LUXURY ACCESSORIES</h2></div>
+            <p style="text-align:center; margin-bottom:1rem;">Refined details — from cufflinks to exclusive timepieces.</p>
+            <div id="accessories-product-grid" class="product-grid"></div>
+            <div id="accessories-gemstone-row" class="gemstone-strip"></div>
+            <div style="margin: 2rem 0; background:#0b0b0b; border-radius: 24px; padding: 1.5rem; text-align:center;">
+                <span>✨ Complimentary gift wrapping & lifetime cleaning on all accessories.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICES SECTION ==================== -->
+    <section id="services" class="page-section">
+        <div class="container">
+            <div class="title-wrapper"><h2 class="section-title">✨ PREMIUM SERVICES ✨</h2></div>
+            <div id="services-grid" class="services-grid"></div>
+            <div style="background:#0c0c0c; border-radius:28px; margin-top:2rem; padding:2rem; text-align:center;">
+                <h3 style="color:#c7a84b;">📅 Book a private consultation</h3>
+                <p>Our experts guide you through gem selection and design.</p>
+                <button id="consultBtnGlobal" class="btn-gold">REQUEST APPOINTMENT</button>
+            </div>
+            <div id="services-gemstone-row" class="gemstone-strip"></div>
+        </div>
+    </section>
+
+    <!-- ==================== PERSONALIZE SECTION ==================== -->
+    <section id="personalize" class="page-section">
+        <div class="container">
+            <div class="title-wrapper"><h2 class="section-title">💎 PERSONALIZE YOUR JEWELRY</h2></div>
+            <p style="text-align:center; margin-bottom:1rem;">Create a unique piece that tells your story. Choose metal, gemstone, and engraving.</p>
+            <div class="personalize-form">
+                <div class="form-group">
+                    <label>Jewelry Type</label>
+                    <select id="jewelryType">
+                        <option>Engagement Ring</option>
+                        <option>Necklace Pendant</option>
+                        <option>Bracelet</option>
+                        <option>Earrings</option>
+                        <option>Signet Ring</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Metal Preference</label>
+                    <select id="metalType">
+                        <option>Yellow Gold (18k)</option>
+                        <option>White Gold</option>
+                        <option>Rose Gold</option>
+                        <option>Platinum</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Center Gemstone</label>
+                    <select id="gemstone">
+                        <option>Diamond</option>
+                        <option>Emerald</option>
+                        <option>Sapphire (Blue)</option>
+                        <option>Ruby</option>
+                        <option>Amethyst</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Engraving Text (max 20 characters)</label>
+                    <input type="text" id="engravingText" placeholder="e.g., Forever Yours, 2026" maxlength="20">
+                </div>
+                <div class="form-group">
+                    <label>Special Requests</label>
+                    <textarea rows="3" id="specialRequest" placeholder="Any design details or inspiration..."></textarea>
+                </div>
+                <button class="btn-gold" id="submitPersonalizeBtn" style="width:100%">✨ REQUEST CUSTOM QUOTE</button>
+                <div id="personalizeFeedback" class="preview-message" style="display:none;"></div>
+            </div>
+            <div id="personalize-gemstone-row" class="gemstone-strip"></div>
+            <div style="background:#0c0c0c; border-radius:28px; padding:1.5rem; margin-top:1.5rem; text-align:center;">
+                <p>📞 Our artisans will contact you within 48h with a sketch and price estimate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="page-section">
+        <div class="container">
+            <div class="title-wrapper"><h2 class="section-title">📞 CONTACT US</h2></div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-detail">+254 117 104 787</div>
+                    <p style="margin-top:0.5rem;">Call / WhatsApp</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-detail">Nairobi, Kenya</div>
+                    <p>Westlands, Jewel Palace, 5th Floor</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-detail">concierge@elegancejewelers.ke</div>
+                    <p>24h response time</p>
+                </div>
+            </div>
+            <div class="map-placeholder">
+                <p>🌟 Visit our Nairobi atelier by appointment — Bespoke consultations available daily.</p>
+                <p style="margin-top:0.8rem;">📍 Opposite Sarit Centre, Elegance House, Nairobi</p>
+                <iframe width="100%" height="200" style="border-radius:20px; margin-top:1rem; border:0;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Nairobi+Kenya&zoom=12"></iframe>
+                <p style="font-size:0.7rem; margin-top:0.5rem;">(Interactive map preview)</p>
+            </div>
+            <div id="contact-gemstone-row" class="gemstone-strip"></div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>✨ ELEGANCE JEWELERS — Timeless Craftsmanship, Personalized for You ✨</p>
+    <p style="margin-top: 0.5rem;">© 2026 | Nairobi, Kenya | Bespoke luxury & heirloom quality</p>
+</footer>
+
+<script>
+    // ---------- DATA: PRODUCTS, SERVICES, GEMSTONES ----------
+    const homeProducts = [
+        { title: "Eternal Solitaire Ring", price: "$2,299", desc: "Platinum & 1.5ct diamond", img: "https://images.pexels.com/photos/1184120/pexels-photo-1184120.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+        { title: "Golden Grace Pendant", price: "$2,850", desc: "18k yellow gold, delicate chain", img: "https://images.pexels.com/photos/1452972/pexels-photo-1452972.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+        { title: "Baroque Pearl Studs", price: "$2,500", desc: "Freshwater pearls, white gold", img: "https://images.pexels.com/photos/818828/pexels-photo-818828.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+        { title: "Emerald Halo Bracelet", price: "$3,750", desc: "Colombian emeralds & diamonds", img: "https://images.pexels.com/photos/914668/pexels-photo-914668.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+        { title: "Midnight Sapphire Ring", price: "$4,100", desc: "Blue sapphire, rose gold band", img: "https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+        { title: "Infinity Diamond Necklace", price: "$5,200", desc: "Layered brilliance, 2ct tw", img: "https://images.pexels.com/photos/1709003/pexels-photo-1709003.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" }
+    ];
+
+    const accessoriesProducts = [
+        { title: "Classic Gold Cufflinks", price: "$950", desc: "18k gold, engine-turned design", img: "https://images.pexels.com/photos/2870325/pexels-photo-2870325.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop", badge: "Limited" },
+        { title: "Luxury Chronograph Watch", price: "$5,600", desc: "Stainless steel & leather strap", img: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop", badge: "New" },
+        { title: "Pearl Leather Bracelet", price: "$780", desc: "Black cord with cultured pearl", img: "https://images.pexels.com/photos/2709775/pexels-photo-2709775.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop", badge: "Best Seller" },
+        { title: "Sapphire Hair Pin", price: "$420", desc: "White gold, accent sapphires", img: "https://images.pexels.com/photos/711445/pexels-photo-711445.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop", badge: "Exclusive" },
+        { title: "Diamond Tennis Bracelet", price: "$3,890", desc: "Round brilliant, 3ct tw", img: "https://images.pexels.com/photos/1191690/pexels-photo-1191690.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop", badge: "Iconic" },
+        { title: "Onyx & Gold Ring", price: "$1,450", desc: "Black onyx, yellow gold setting", img: "https://images.pexels.com/photos/935743/pexels-photo-935743.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop", badge: "Statement" }
+    ];
+
+    const servicesList = [
+        { name: "BESPOKE DESIGN", icon: "✍️", description: "Personalized sketches & custom creations from your vision.", img: "https://images.pexels.com/photos/3769981/pexels-photo-3769981.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" },
+        { name: "EXPERT REPAIRS", icon: "🔧", description: "Precision restoration, resizing & stone tightening.", img: "https://images.pexels.com/photos/7217982/pexels-photo-7217982.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" },
+        { name: "ENGRAVING", icon: "🖋️", description: "Hand-engraved messages or monograms inside rings.", img: "https://images.pexels.com/photos/6795251/pexels-photo-6795251.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" },
+        { name: "CONCIERGE", icon: "🥂", description: "Private appointments, gem sourcing & heirloom transformation.", img: "https://images.pexels.com/photos/3822977/pexels-photo-3822977.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" }
+    ];
+
+    const gemstones = [
+        { name: "EMERALD", img: "https://images.pexels.com/photos/1030192/pexels-photo-1030192.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" },
+        { name: "DIAMOND", img: "https://images.pexels.com/photos/1184120/pexels-photo-1184120.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" },
+        { name: "SAPPHIRE", img: "https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" },
+        { name: "RUBY", img: "https://images.pexels.com/photos/810878/pexels-photo-810878.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" },
+        { name: "AMETHYST", img: "https://images.pexels.com/photos/977264/pexels-photo-977264.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" }
+    ];
+
+    function renderGemstoneRowHTML() {
+        return `
+            <div class="gemstone-container">
+                ${gemstones.map(gem => `
+                    <div class="gem-item">
+                        <img class="gem-img" src="${gem.img}" alt="${gem.name}" loading="lazy" onerror="this.src='https://placehold.co/100x100/222222/c7a84b?text=${gem.name.charAt(0)}'">
+                        <div class="gem-name">${gem.name}</div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    function renderProductGrid(products, withBadge = false) {
+        return products.map(p => `
+            <div class="card">
+                <img class="card-img" src="${p.img}" alt="${p.title}" loading="lazy" onerror="this.src='https://placehold.co/400x300/222222/c7a84b?text=Elegance+Gem'">
+                <div class="card-info">
+                    ${withBadge && p.badge ? `<span class="accessory-badge">${p.badge}</span>` : ''}
+                    <div class="card-title">${p.title}</div>
+                    <div class="card-price">${p.price}</div>
+                    <div class="card-desc">${p.desc}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderServicesCards() {
+        return servicesList.map(s => `
+            <div class="service-card">
+                <div class="service-icon">${s.icon}</div>
+                <h3>${s.name}</h3>
+                <p style="margin-bottom: 1rem; color:#bbb;">${s.description}</p>
+                <img src="${s.img}" alt="${s.name}" style="width:100%; height:170px; object-fit:cover; border-radius:12px; border:1px solid #333;" onerror="this.src='https://placehold.co/400x200/1a1a1a/c7a84b?text=Craftsmanship'">
+            </div>
+        `).join('');
+    }
+
+    // Populate all sections
+    document.getElementById('home-product-grid').innerHTML = renderProductGrid(homeProducts, false);
+    document.getElementById('accessories-product-grid').innerHTML = renderProductGrid(accessoriesProducts, true);
+    document.getElementById('services-grid').innerHTML = renderServicesCards();
+    
+    // Gemstone rows for each section
+    const gemstoneContainers = ['home-gemstone-row', 'accessories-gemstone-row', 'services-gemstone-row', 'personalize-gemstone-row', 'contact-gemstone-row'];
+    gemstoneContainers.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = renderGemstoneRowHTML();
+    });
+
+    // ---------- SMOOTH SCROLL & ACTIVE NAV HIGHLIGHT ----------
+    const sections = ['home', 'accessories', 'services', 'personalize', 'contact'];
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function updateActiveSection() {
+        let current = '';
+        const scrollPos = window.scrollY + 120; // offset for sticky header
+        for (let sec of sections) {
+            const sectionEl = document.getElementById(sec);
+            if (sectionEl) {
+                const offsetTop = sectionEl.offsetTop;
+                const offsetBottom = offsetTop + sectionEl.offsetHeight;
+                if (scrollPos >= offsetTop && scrollPos < offsetBottom) {
+                    current = sec;
+                    break;
+                }
+            }
+        }
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-section') === current) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveSection);
+    window.addEventListener('load', updateActiveSection);
+
+    // Optional: additional smooth behavior for any button that leads to sections
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId !== '#') {
+                const targetEl = document.querySelector(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.pushState(null, null, targetId);
+                }
+            }
+        });
+    });
+
+    // Personalize form logic
+    const submitBtn = document.getElementById('submitPersonalizeBtn');
+    const feedbackDiv = document.getElementById('personalizeFeedback');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const type = document.getElementById('jewelryType')?.value || '';
+            const metal = document.getElementById('metalType')?.value || '';
+            const gem = document.getElementById('gemstone')?.value || '';
+            const engrave = document.getElementById('engravingText')?.value || '';
+            const special = document.getElementById('specialRequest')?.value || '';
+            if (feedbackDiv) {
+                feedbackDiv.style.display = 'block';
+                feedbackDiv.innerHTML = `✨ Thank you! Your personalized ${type} in ${metal} with ${gem} has been requested. Engraving: "${engrave || 'None'}". Our team will reach out within 24h at +254117104787. ✨`;
+                feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                setTimeout(() => { feedbackDiv.style.opacity = '1'; }, 50);
+            }
+        });
+    }
+
+    // Consult button on services
+    const consultBtn = document.getElementById('consultBtnGlobal');
+    if (consultBtn) {
+        consultBtn.addEventListener('click', () => {
+            alert("📞 Call +254117104787 or email concierge@elegancejewelers.ke to book your private appointment in Nairobi.");
+        });
+    }
+</script>
+</body>
+</html>
