@@ -402,8 +402,9 @@
     <section id="accessories" class="page-section">
         <div class="container">
             <h2 class="section-title">🕰️ LUXURY ACCESSORIES</h2>
-            <p style="text-align:center; margin-bottom:2rem;">Discover our curated collection of 7 exclusive accessories</p>
+            <p style="text-align:center; margin-bottom:2rem;">Discover our curated collection of exclusive accessories</p>
             <div id="accessories-grid-container" class="accessories-grid"></div>
+            <div id="accessories-gemstone-row" class="gemstone-strip"></div>
         </div>
     </section>
 
@@ -452,7 +453,6 @@
         { id: 103, title: "Pearl & Leather Bracelet", price: 780, desc: "Cultured pearl + genuine leather", img: "https://images.pexels.com/photos/2709775/pexels-photo-2709775.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Best Seller" },
         { id: 104, title: "Diamond Tennis Bracelet", price: 3890, desc: "3ct total weight, brilliant cut", img: "https://images.pexels.com/photos/1191690/pexels-photo-1191690.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Iconic" },
         { id: 105, title: "Sapphire Cuff Bracelet", price: 2100, desc: "Blue sapphires & white gold", img: "https://images.pexels.com/photos/711445/pexels-photo-711445.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Exclusive" },
-        { id: 106, title: "Onyx Signet Ring", price: 1450, desc: "Black onyx, yellow gold setting", img: "https://images.pexels.com/photos/935743/pexels-photo-935743.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Statement" },
         { id: 107, title: "Emerald Drop Earrings", price: 3200, desc: "Colombian emeralds, 18k gold", img: "https://images.pexels.com/photos/914668/pexels-photo-914668.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Heritage" }
     ];
 
@@ -545,6 +545,7 @@
                         <div class="accessory-price">$${item.price.toLocaleString()}</div>
                         <div class="card-desc" style="color:#aaa; font-size:0.85rem;">${item.desc}</div>
                         <button class="add-to-cart" onclick='addToCart(${JSON.stringify(item)})'>Add to Cart 🛒</button>
+                        <div id="accessories-gemstone-row" class="gemstone-strip"></div>
                     </div>
                 </div>
             `;
