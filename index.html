@@ -57,19 +57,23 @@
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             letter-spacing: 2px;
             font-weight: 300;
             color: #c7a84b;
             text-transform: uppercase;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         .logo-img {
-            height: 40px;
+            height: 45px;
             width: auto;
-            filter: brightness(0) invert(1);
+            object-fit: contain;
+        }
+        /* Fallback if image fails to load */
+        .logo-img[src=""], .logo-img:not([src]) {
+            display: none;
         }
 
         .nav-links {
@@ -111,7 +115,7 @@
             border-radius: 50%;
         }
 
-        /* ========== VIDEO BACKGROUND SECTION (HOME) ========== */
+        /* ========== VIDEO BACKGROUND SECTION (HOME) - NEW VIDEO ========== */
         .video-hero {
             position: relative;
             height: 100vh;
@@ -190,32 +194,15 @@
             gap: 2rem;
             margin: 2rem 0;
         }
-        /* Make last two items centered on larger screens */
-        .accessories-grid .accessory-card:last-child,
-        .accessories-grid .accessory-card:nth-last-child(2) {
-            justify-self: center;
-            width: 100%;
-            max-width: 320px;
-        }
         @media (min-width: 992px) {
             .accessories-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
-            .accessories-grid .accessory-card:nth-last-child(2) {
-                grid-column: span 1;
-                justify-self: end;
-            }
+            .accessories-grid .accessory-card:nth-last-child(2),
             .accessories-grid .accessory-card:last-child {
-                grid-column: span 1;
-                justify-self: start;
-            }
-            /* Center both when they are the only ones in row */
-            .accessories-grid .accessory-card:nth-last-child(2):nth-child(6),
-            .accessories-grid .accessory-card:last-child:nth-child(7) {
                 justify-self: center;
             }
         }
-        /* For medium screens, just center them gracefully */
         @media (max-width: 991px) {
             .accessories-grid .accessory-card:last-child,
             .accessories-grid .accessory-card:nth-last-child(2) {
@@ -340,7 +327,7 @@
             color: #c7a84b;
         }
 
-        /* ========== FOOTER: MEGA MENU (SUPPORT, SERVICES, ABOUT, LEGAL) ========== */
+        /* ========== FOOTER MEGA MENU ========== */
         .footer-mega {
             background: #050505;
             border-top: 1px solid #2a2a2a;
@@ -386,7 +373,7 @@
         .footer-logo img {
             height: 50px;
             margin-bottom: 1rem;
-            filter: brightness(0) invert(1);
+            object-fit: contain;
         }
         .footer-logo p {
             color: #777;
@@ -470,7 +457,8 @@
 
 <nav>
     <div class="logo">
-        <img class="logo-img" src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Elegante Jewellarat Logo">
+        <!-- REPLACE THE SRC BELOW WITH YOUR ACTUAL LOGO IMAGE URL -->
+        <img class="logo-img" id="siteLogo" src="" alt="Elegante Jewellarat Logo" onerror="this.style.display='none'">
         ELEGANTE JEWELLARAT
     </div>
     <ul class="nav-links">
@@ -485,10 +473,11 @@
 </nav>
 
 <main>
-    <!-- HOME: VIDEO BACKGROUND -->
+    <!-- HOME: NEW VIDEO BACKGROUND (Pexels jewelry video) -->
     <section id="home" class="page-section video-hero">
         <video class="bg-video" autoplay muted loop playsinline>
-            <source src="https://videos.pexels.com/video-files/853889/853889-hd_1920_1080_25fps.mp4">
+            <source src="https://videos.pexels.com/video-files/853889/853889-hd_1920_1080_25fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
         <div class="video-overlay"></div>
         <div class="video-content">
@@ -498,11 +487,11 @@
         </div>
     </section>
 
-    <!-- ACCESSORIES PAGE: 7 PRODUCTS (LAST TWO CENTERED) -->
+    <!-- ACCESSORIES PAGE: 7 PRODUCTS -->
     <section id="accessories" class="page-section">
         <div class="container">
             <h2 class="section-title">🕰️ LUXURY ACCESSORIES</h2>
-            <p style="text-align:center; margin-bottom:2rem;">Exclusive collection of masterpieces</p>
+            <p style="text-align:center; margin-bottom:2rem;">Exclusive collection of 7 masterpieces</p>
             <div id="accessories-grid-container" class="accessories-grid"></div>
         </div>
     </section>
@@ -524,68 +513,21 @@
     </section>
 </main>
 
-<!-- FOOTER: MEGA MENU (SUPPORT, SERVICES, ABOUT, LEGAL) + LOGO -->
+<!-- FOOTER MEGA MENU -->
 <div class="footer-mega">
     <div class="footer-grid">
-        <!-- SUPPORT COLUMN -->
-        <div class="footer-col">
-            <h4>SUPPORT</h4>
-            <ul>
-                <li><a href="#">Track Your Order</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Book an Appointment</a></li>
-                <li><a href="#">Frequently Asked Questions</a></li>
-                <li><a href="#">Shipping & Return Policy</a></li>
-                <li><a href="#">Store Information | Store List</a></li>
-                <li><a href="#">Site Index</a></li>
-                <li><a href="#">Gift Card</a></li>
-                <li><a href="#">Jewelry Gift Guide</a></li>
-            </ul>
-        </div>
-        <!-- SERVICES COLUMN -->
-        <div class="footer-col">
-            <h4>SERVICES</h4>
-            <ul>
-                <li><a href="#">Contact a Diamond Expert</a></li>
-                <li><a href="#">Request Repair</a></li>
-                <li><a href="#">Personalization</a></li>
-                <li><a href="#">Business Accounts</a></li>
-                <li><a href="#">Financing Options</a></li>
-                <li><a href="#">Alertline</a></li>
-            </ul>
-        </div>
-        <!-- ABOUT COLUMN -->
-        <div class="footer-col">
-            <h4>ABOUT</h4>
-            <ul>
-                <li><a href="#">Sustainability</a></li>
-                <li><a href="#">Elegante Foundation</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Press & Media</a></li>
-            </ul>
-        </div>
-        <!-- LEGAL COLUMN -->
-        <div class="footer-col">
-            <h4>LEGAL</h4>
-            <ul>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">Accessibility Statement</a></li>
-                <li><a href="#">Transparency in Coverage</a></li>
-                <li><a href="#">California Privacy</a></li>
-                <li><a href="#">Human Rights & Supply Chain</a></li>
-                <li><a href="#">Product Safety</a></li>
-                <li><a href="#">Your Privacy Choices</a></li>
-            </ul>
-        </div>
+        <div class="footer-col"><h4>SUPPORT</h4><ul><li><a href="#">Track Your Order</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Book an Appointment</a></li><li><a href="#">FAQs</a></li><li><a href="#">Shipping & Return</a></li><li><a href="#">Store List</a></li><li><a href="#">Gift Card</a></li><li><a href="#">Jewelry Gift Guide</a></li></ul></div>
+        <div class="footer-col"><h4>SERVICES</h4><ul><li><a href="#">Diamond Expert</a></li><li><a href="#">Request Repair</a></li><li><a href="#">Personalization</a></li><li><a href="#">Business Accounts</a></li><li><a href="#">Financing Options</a></li><li><a href="#">Alertline</a></li></ul></div>
+        <div class="footer-col"><h4>ABOUT</h4><ul><li><a href="#">Sustainability</a></li><li><a href="#">Elegante Foundation</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li></ul></div>
+        <div class="footer-col"><h4>LEGAL</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms & Conditions</a></li><li><a href="#">Accessibility</a></li><li><a href="#">Transparency</a></li><li><a href="#">California Privacy</a></li><li><a href="#">Human Rights</a></li><li><a href="#">Product Safety</a></li><li><a href="#">Privacy Choices</a></li></ul></div>
     </div>
     <div class="footer-logo">
-        <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Elegante Jewellarat Logo">
+        <img id="footerLogoImg" src="" alt="Elegante Jewellarat Logo" onerror="this.style.display='none'">
         <p>© 2026 ELEGANTE JEWELLARAT — Nairobi, Kenya | Where Elegance Meets Eternity</p>
     </div>
 </div>
 
-<!-- WhatsApp Floating Button -->
+<!-- WhatsApp Button -->
 <div class="whatsapp-btn" id="whatsappBtn">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
 </div>
@@ -602,152 +544,70 @@
 </div>
 
 <script>
-    // ==================== 7 ACCESSORIES (HIGH-QUALITY IMAGES) ====================
+    // ==================== 7 ACCESSORIES ====================
     const accessoriesList = [
         { id: 101, title: "Classic Gold Cufflinks", price: 950, desc: "18k solid gold, engine-turned finish", img: "https://images.pexels.com/photos/2870325/pexels-photo-2870325.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Limited" },
         { id: 102, title: "Luxury Chronograph Watch", price: 5600, desc: "Swiss movement, sapphire crystal", img: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "New" },
         { id: 103, title: "Pearl & Leather Bracelet", price: 780, desc: "Cultured pearl + genuine leather", img: "https://images.pexels.com/photos/2709775/pexels-photo-2709775.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Best Seller" },
-        { id: 104, title: "Diamond Tennis Bracelet", price: 3890, desc: "3ct total weight, brilliant cut", img: "https://images.pexels.com/photos/1191690/pexels-photo-1191690.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Iconic" },
-        { id: 105, title: "Sapphire Cuff Bracelet", price: 2100, desc: "Blue sapphires & white gold", img: "https://images.pexels.com/photos/711445/pexels-photo-711445.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Exclusive" }
-        { id: 106, title: "Emerald Drop Earrings", price: 3200, desc: "Colombian emeralds, 18k gold", img: "https://images.pexels.com/photos/914668/pexels-photo-914668.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Heritage" }
+        { id: 104, title: "Diamond Tennis Bracelet", price: 3890, desc: "3ct total weight", img: "https://images.pexels.com/photos/1191690/pexels-photo-1191690.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Iconic" },
+        { id: 105, title: "Sapphire Cuff Bracelet", price: 2100, desc: "Blue sapphires & white gold", img: "https://images.pexels.com/photos/711445/pexels-photo-711445.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Exclusive" },
+        { id: 106, title: "Onyx Signet Ring", price: 1450, desc: "Black onyx, yellow gold", img: "https://images.pexels.com/photos/935743/pexels-photo-935743.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Statement" },
+        { id: 107, title: "Emerald Drop Earrings", price: 3200, desc: "Colombian emeralds", img: "https://images.pexels.com/photos/914668/pexels-photo-914668.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop", badge: "Heritage" }
     ];
 
-    // 3 SERVICES
     const servicesData = [
-        { name: "BESPOKE DESIGN", icon: "✍️", description: "Collaborate with our master jewelers to create a one-of-a-kind piece that reflects your personal story.", img: "https://images.pexels.com/photos/3769981/pexels-photo-3769981.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" },
-        { name: "EXPERT RESTORATION", icon: "🔧", description: "Precision repair, resizing, and restoration of heirloom jewelry with meticulous attention.", img: "https://images.pexels.com/photos/7217982/pexels-photo-7217982.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" },
-        { name: "PRIVATE CONCIERGE", icon: "🥂", description: "Personalized atelier appointments, worldwide gem sourcing, and lifetime maintenance.", img: "https://images.pexels.com/photos/3822977/pexels-photo-3822977.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" }
+        { name: "BESPOKE DESIGN", icon: "✍️", description: "Collaborate with our master jewelers to create a one-of-a-kind piece.", img: "https://images.pexels.com/photos/3769981/pexels-photo-3769981.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" },
+        { name: "EXPERT RESTORATION", icon: "🔧", description: "Precision repair and restoration of heirloom jewelry.", img: "https://images.pexels.com/photos/7217982/pexels-photo-7217982.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" },
+        { name: "PRIVATE CONCIERGE", icon: "🥂", description: "Personalized atelier appointments and gem sourcing.", img: "https://images.pexels.com/photos/3822977/pexels-photo-3822977.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" }
     ];
 
-    // CONTACT OPTIONS (clickable + zoom)
     const contactOptions = [
         { type: "phone", icon: "📱", detail: "+254 117 104 787", label: "Call or WhatsApp", action: "tel:+254117104787" },
         { type: "location", icon: "📍", detail: "Nairobi, Kenya", label: "Westlands, Jewel Palace", action: "https://maps.google.com/?q=Nairobi+Kenya" },
         { type: "email", icon: "✉️", detail: "concierge@elegantejewellarat.ke", label: "Email us", action: "mailto:concierge@elegantejewellarat.ke" }
     ];
 
-    // Shopping Cart Logic
+    // Shopping Cart
     let cart = [];
-
     function updateCartUI() {
-        const cartCountSpan = document.getElementById('cartCount');
-        if (cartCountSpan) cartCountSpan.innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('cartCount').innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
         const cartItemsDiv = document.getElementById('cartItems');
-        const cartTotalSpan = document.getElementById('cartTotal');
-        if (!cartItemsDiv) return;
-        if (cart.length === 0) {
-            cartItemsDiv.innerHTML = '<p>Your cart is empty. Add some elegance! ✨</p>';
-            if (cartTotalSpan) cartTotalSpan.innerText = 'Total: $0';
-            return;
-        }
+        if (cart.length === 0) { cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>'; document.getElementById('cartTotal').innerText = 'Total: $0'; return; }
         let html = '', total = 0;
-        cart.forEach((item, idx) => {
-            total += item.price * item.quantity;
-            html += `<div class="cart-item"><span><strong>${item.title}</strong> x${item.quantity}</span><span>$${(item.price * item.quantity).toLocaleString()}</span><button onclick="removeFromCart(${idx})" style="background:#c7a84b; border:none; border-radius:20px; padding:4px 12px; cursor:pointer;">Remove</button></div>`;
-        });
-        cartItemsDiv.innerHTML = html;
-        if (cartTotalSpan) cartTotalSpan.innerText = `Total: $${total.toLocaleString()}`;
+        cart.forEach((item, idx) => { total += item.price * item.quantity; html += `<div class="cart-item"><span><strong>${item.title}</strong> x${item.quantity}</span><span>$${(item.price * item.quantity).toLocaleString()}</span><button onclick="removeFromCart(${idx})" style="background:#c7a84b; border:none; border-radius:20px; padding:4px 12px;">Remove</button></div>`; });
+        cartItemsDiv.innerHTML = html; document.getElementById('cartTotal').innerText = `Total: $${total.toLocaleString()}`;
     }
+    window.addToCart = function(p) { let existing = cart.find(i => i.id === p.id); existing ? existing.quantity++ : cart.push({ ...p, quantity: 1 }); updateCartUI(); alert(`${p.title} added to cart!`); };
+    window.removeFromCart = function(i) { cart.splice(i,1); updateCartUI(); if(cart.length===0) document.getElementById('cartModal').style.display='none'; };
 
-    window.addToCart = function(product) {
-        const existing = cart.find(item => item.id === product.id);
-        if (existing) existing.quantity++;
-        else cart.push({ ...product, quantity: 1 });
-        updateCartUI();
-        alert(`${product.title} added to your cart!`);
-    };
-    window.removeFromCart = function(index) {
-        cart.splice(index, 1);
-        updateCartUI();
-        if (cart.length === 0) document.getElementById('cartModal').style.display = 'none';
-    };
+    function renderAccessories() { let html = ''; accessoriesList.forEach(item => { html += `<div class="accessory-card"><img class="accessory-img" src="${item.img}"><div class="accessory-info"><span style="background:#1f1a0e; padding:2px 10px; border-radius:20px; font-size:0.7rem; color:#c7a84b;">${item.badge}</span><div class="accessory-title">${item.title}</div><div class="accessory-price">$${item.price.toLocaleString()}</div><div style="color:#aaa; font-size:0.85rem;">${item.desc}</div><button class="add-to-cart" onclick='addToCart(${JSON.stringify(item)})'>Add to Cart 🛒</button></div></div>`; }); document.getElementById('accessories-grid-container').innerHTML = html; }
+    function renderServices() { let html = ''; servicesData.forEach(s => { html += `<div class="service-item"><div class="service-icon">${s.icon}</div><h3>${s.name}</h3><p style="color:#ccc;">${s.description}</p><img class="service-img" src="${s.img}"></div>`; }); document.getElementById('services-container').innerHTML = html; }
+    function renderContact() { let html = ''; contactOptions.forEach(opt => { html += `<div class="contact-option" data-action="${opt.action}"><div class="contact-icon">${opt.icon}</div><div class="contact-detail">${opt.detail}</div><div style="color:#aaa;">${opt.label}</div></div>`; }); document.getElementById('contact-container').innerHTML = html; document.querySelectorAll('.contact-option').forEach(el => { el.onclick = () => { let a = el.getAttribute('data-action'); if(a.startsWith('http')) window.open(a,'_blank'); else if(a.startsWith('tel')||a.startsWith('mailto')) window.location.href=a; else alert(`Contact: ${el.querySelector('.contact-detail')?.innerText}`); }; }); }
 
-    function renderAccessories() {
-        const container = document.getElementById('accessories-grid-container');
-        if (!container) return;
-        let html = '';
-        accessoriesList.forEach(item => {
-            html += `
-                <div class="accessory-card">
-                    <img class="accessory-img" src="${item.img}" alt="${item.title}" loading="lazy">
-                    <div class="accessory-info">
-                        <span style="background:#1f1a0e; padding:2px 10px; border-radius:20px; font-size:0.7rem; color:#c7a84b;">${item.badge}</span>
-                        <div class="accessory-title">${item.title}</div>
-                        <div class="accessory-price">$${item.price.toLocaleString()}</div>
-                        <div class="card-desc" style="color:#aaa; font-size:0.85rem;">${item.desc}</div>
-                        <button class="add-to-cart" onclick='addToCart(${JSON.stringify(item)})'>Add to Cart 🛒</button>
-                    </div>
-                </div>
-            `;
-        });
-        container.innerHTML = html;
+    // Cart Modal
+    document.getElementById('cartIcon').onclick = () => { updateCartUI(); document.getElementById('cartModal').style.display = 'flex'; };
+    document.getElementById('closeCart').onclick = () => document.getElementById('cartModal').style.display = 'none';
+    window.onclick = (e) => { if(e.target === document.getElementById('cartModal')) document.getElementById('cartModal').style.display = 'none'; };
+    document.getElementById('checkoutBtn').onclick = () => { if(cart.length===0) alert('Cart empty'); else { alert('Thank you! Our team will contact you via WhatsApp.'); cart = []; updateCartUI(); document.getElementById('cartModal').style.display = 'none'; } };
+    document.getElementById('whatsappBtn').onclick = () => window.open('https://wa.me/254117104787?text=Hello%20Elegante%20Jewellarat,%20I%20am%20interested.', '_blank');
+
+    // Active section highlight
+    function updateActive() { let sections=['home','accessories','services','contact'], current='', pos=window.scrollY+120; for(let s of sections){ let el=document.getElementById(s); if(el && pos>=el.offsetTop && pos<el.offsetTop+el.offsetHeight) current=s; } document.querySelectorAll('.nav-links a').forEach(link=>{ link.classList.remove('active'); if(link.getAttribute('data-section')===current) link.classList.add('active'); }); }
+    window.addEventListener('scroll', updateActive);
+    window.addEventListener('load', () => { renderAccessories(); renderServices(); renderContact(); updateActive(); updateCartUI(); });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.onclick = function(e) { let targetId=this.getAttribute('href'); if(targetId && targetId!=='#'){ let targetEl=document.querySelector(targetId); if(targetEl){ e.preventDefault(); targetEl.scrollIntoView({behavior:'smooth', block:'start'}); } } }; });
+
+    // ========== LOGO SETUP - INSTRUCTIONS ==========
+    // To add your logo from Pinterest:
+    // 1. Open the Pinterest link: https://www.pinterest.com/pin/19351473395234161/
+    // 2. Right-click on the image and select "Copy image address" or "Open image in new tab"
+    // 3. Copy the image URL (should end with .jpg, .png, etc.)
+    // 4. Replace the empty src strings below with that URL
+    const logoUrl = "https://i.pinimg.com/236x/53/b4/5d/53b45dce3ae53999dc710b6e39b73737.jpg";  // PASTE YOUR LOGO IMAGE URL HERE (inside the quotes)
+    if (logoUrl) {
+        document.getElementById('siteLogo').src = logoUrl;
+        document.getElementById('footerLogoImg').src = logoUrl;
     }
-
-    function renderServices() {
-        const container = document.getElementById('services-container');
-        if (!container) return;
-        let html = '';
-        servicesData.forEach(service => {
-            html += `<div class="service-item"><div class="service-icon">${service.icon}</div><h3>${service.name}</h3><p style="color:#ccc;">${service.description}</p><img class="service-img" src="${service.img}" alt="${service.name}"></div>`;
-        });
-        container.innerHTML = html;
-    }
-
-    function renderContact() {
-        const container = document.getElementById('contact-container');
-        if (!container) return;
-        let html = '';
-        contactOptions.forEach(opt => {
-            html += `<div class="contact-option" data-action="${opt.action}"><div class="contact-icon">${opt.icon}</div><div class="contact-detail">${opt.detail}</div><div class="contact-label" style="color:#aaa;">${opt.label}</div></div>`;
-        });
-        container.innerHTML = html;
-        document.querySelectorAll('.contact-option').forEach(el => {
-            el.addEventListener('click', () => {
-                const action = el.getAttribute('data-action');
-                if (action.startsWith('http')) window.open(action, '_blank');
-                else if (action.startsWith('tel') || action.startsWith('mailto')) window.location.href = action;
-                else alert(`Contact us: ${el.querySelector('.contact-detail')?.innerText}`);
-            });
-        });
-    }
-
-    // Cart Modal Handlers
-    const cartIcon = document.getElementById('cartIcon'), cartModal = document.getElementById('cartModal'), closeCart = document.getElementById('closeCart');
-    if (cartIcon) cartIcon.onclick = () => { updateCartUI(); cartModal.style.display = 'flex'; };
-    if (closeCart) closeCart.onclick = () => cartModal.style.display = 'none';
-    window.onclick = (e) => { if (e.target === cartModal) cartModal.style.display = 'none'; };
-    const checkoutBtn = document.getElementById('checkoutBtn');
-    if (checkoutBtn) checkoutBtn.onclick = () => {
-        if (cart.length === 0) alert('Your cart is empty.');
-        else { alert('Thank you! Our team will contact you via WhatsApp within 2 hours.'); cart = []; updateCartUI(); cartModal.style.display = 'none'; }
-    };
-    document.getElementById('whatsappBtn').onclick = () => window.open('https://wa.me/254117104787?text=Hello%20Elegante%20Jewellarat,%20I%20am%20interested%20in%20your%20collection.', '_blank');
-
-    // Active section highlight & smooth scroll
-    function updateActiveSection() {
-        const sections = ['home', 'accessories', 'services', 'contact'];
-        let current = '';
-        const scrollPos = window.scrollY + 120;
-        for (let sec of sections) {
-            const el = document.getElementById(sec);
-            if (el && scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) current = sec;
-        }
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('data-section') === current) link.classList.add('active');
-        });
-    }
-    window.addEventListener('scroll', updateActiveSection);
-    window.addEventListener('load', () => { renderAccessories(); renderServices(); renderContact(); updateActiveSection(); updateCartUI(); });
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId && targetId !== '#') {
-                const targetEl = document.querySelector(targetId);
-                if (targetEl) { e.preventDefault(); targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-            }
-        });
-    });
 </script>
 </body>
 </html>
