@@ -291,6 +291,200 @@
             border-radius: 16px;
             margin-top: 1rem;
         }
+        /* ========== PERSONALIZATION PAGE STYLES ========== */
+.personalization-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.preview-card {
+    background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+    border-radius: 28px;
+    border: 1px solid #c7a84b;
+    overflow: hidden;
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.preview-header {
+    background: #c7a84b;
+    color: #000;
+    padding: 0.8rem;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.preview-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.preview-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.preview-name {
+    font-size: 1.5rem;
+    color: #c7a84b;
+    margin-bottom: 0.5rem;
+}
+
+.preview-details {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.preview-engraving {
+    background: #0a0a0a;
+    padding: 0.5rem;
+    border-radius: 12px;
+    font-style: italic;
+    color: #c7a84b;
+    margin: 1rem 0;
+    min-height: 50px;
+}
+
+.preview-price {
+    font-size: 1.8rem;
+    color: #c7a84b;
+    font-weight: bold;
+}
+
+.customization-form {
+    background: #0c0c0c;
+    border-radius: 28px;
+    padding: 2rem;
+    border: 1px solid #2a2a2a;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: #c7a84b;
+    font-weight: 500;
+}
+
+.form-group select, .form-group input, .form-group textarea {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 12px;
+    color: white;
+    font-family: inherit;
+}
+
+.price-breakdown {
+    background: #111;
+    border-radius: 20px;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+}
+
+.price-breakdown h4 {
+    color: #c7a84b;
+    margin-bottom: 1rem;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.price-row.total {
+    border-bottom: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #c7a84b;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.feedback-message {
+    background: #1a1308;
+    padding: 1rem;
+    border-radius: 16px;
+    margin-top: 1rem;
+    text-align: center;
+    color: #c7a84b;
+}
+
+.gem-gallery {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #2a2a2a;
+}
+
+.gem-options {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.gem-option {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.gem-option:hover {
+    transform: translateY(-5px);
+}
+
+.gem-option img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #c7a84b;
+    transition: all 0.2s;
+}
+
+.gem-option.selected img {
+    border: 3px solid #c7a84b;
+    box-shadow: 0 0 15px rgba(199,168,75,0.5);
+    transform: scale(1.05);
+}
+
+.gem-option span {
+    display: block;
+    margin-top: 0.5rem;
+    color: #ccc;
+}
+
+@media (max-width: 900px) {
+    .personalization-container {
+        grid-template-columns: 1fr;
+    }
+    .preview-card {
+        position: relative;
+        top: 0;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
 
         /* ========== CONTACT SECTION (ZOOM + CLICKABLE) ========== */
         .contact-wrapper {
@@ -462,11 +656,12 @@
         ELEGANTE JEWELLARAT
     </div>
     <ul class="nav-links">
-        <li><a href="#home" data-section="home">HOME</a></li>
-        <li><a href="#accessories" data-section="accessories">ACCESSORIES</a></li>
-        <li><a href="#services" data-section="services">SERVICES</a></li>
-        <li><a href="#contact" data-section="contact">CONTACT</a></li>
-    </ul>
+    <li><a href="#home" data-section="home">HOME</a></li>
+    <li><a href="#accessories" data-section="accessories">ACCESSORIES</a></li>
+    <li><a href="#services" data-section="services">SERVICES</a></li>
+    <li><a href="#personalize" data-section="personalize">PERSONALIZE</a></li>  <!-- NEW -->
+    <li><a href="#contact" data-section="contact">CONTACT</a></li>
+</ul>
     <div class="cart-icon" id="cartIcon">
         🛒 <span class="cart-count" id="cartCount">0</span>
     </div>
@@ -477,7 +672,6 @@
     <section id="home" class="page-section video-hero">
         <video class="bg-video" autoplay muted loop playsinline>
             <source src="https://videos.pexels.com/video-files/853889/853889-hd_1920_1080_25fps.mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
         <div class="video-overlay"></div>
         <div class="video-content">
@@ -503,6 +697,133 @@
             <div id="services-container" class="services-showcase"></div>
         </div>
     </section>
+    <!-- ========== PERSONALIZATION PAGE (NEW SECTION) ========== -->
+<section id="personalize" class="page-section">
+    <div class="container">
+        <h2 class="section-title">💎 PERSONALIZE YOUR JEWELRY</h2>
+        <p style="text-align:center; margin-bottom:2rem;">Create a unique piece that tells your story. Customize every detail.</p>
+        
+        <div class="personalization-container">
+            <!-- Live Preview Card -->
+            <div class="preview-card">
+                <div class="preview-header">
+                    <span>✨ YOUR CUSTOM CREATION</span>
+                </div>
+                <div class="preview-content" id="livePreview">
+                    <div class="preview-icon" id="previewIcon">💍</div>
+                    <div class="preview-name" id="previewName">Your Custom Ring</div>
+                    <div class="preview-details" id="previewDetails">
+                        <span id="previewMetal">18k Yellow Gold</span> • 
+                        <span id="previewGem">Diamond</span> • 
+                        <span id="previewSize">Size 7</span>
+                    </div>
+                    <div class="preview-engraving" id="previewEngraving"></div>
+                    <div class="preview-price" id="previewPrice">$2,450</div>
+                </div>
+            </div>
+
+            <!-- Customization Form -->
+            <div class="customization-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>🔹 Jewelry Type</label>
+                        <select id="personalizeType" onchange="updatePreview()">
+                            <option value="ring">Engagement Ring</option>
+                            <option value="necklace">Necklace Pendant</option>
+                            <option value="bracelet">Bracelet</option>
+                            <option value="earrings">Earrings</option>
+                            <option value="cufflinks">Cufflinks</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>🔸 Metal Type</label>
+                        <select id="personalizeMetal" onchange="updatePreview()">
+                            <option value="yellow">18k Yellow Gold</option>
+                            <option value="white">18k White Gold</option>
+                            <option value="rose">18k Rose Gold</option>
+                            <option value="platinum">Platinum</option>
+                            <option value="silver">Sterling Silver</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>💎 Center Gemstone</label>
+                        <select id="personalizeGem" onchange="updatePreview()">
+                            <option value="diamond">Diamond (Brilliant Cut)</option>
+                            <option value="emerald">Emerald (Colombian)</option>
+                            <option value="sapphire">Sapphire (Blue)</option>
+                            <option value="ruby">Ruby (Burmese)</option>
+                            <option value="amethyst">Amethyst</option>
+                            <option value="moissanite">Moissanite</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>📏 Ring Size (US)</label>
+                        <select id="personalizeSize" onchange="updatePreview()">
+                            <option>5</option><option>6</option><option>7</option>
+                            <option>8</option><option>9</option><option>10</option>
+                            <option>11</option><option>12</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>✍️ Engraving Text (max 25 characters)</label>
+                    <input type="text" id="personalizeEngraving" maxlength="25" placeholder="e.g., Forever Yours, 2026" oninput="updatePreview()">
+                    <small style="color:#888;">Add a personal message inside your jewelry</small>
+                </div>
+
+                <div class="form-group">
+                    <label>🎨 Special Instructions / Design Notes</label>
+                    <textarea id="personalizeNotes" rows="3" placeholder="Describe your dream design, any specific details or inspirations..."></textarea>
+                </div>
+
+                <div class="price-breakdown">
+                    <h4>💰 Price Breakdown</h4>
+                    <div class="price-row"><span>Base Price:</span><span id="basePrice">$1,800</span></div>
+                    <div class="price-row"><span>Gemstone Upgrade:</span><span id="gemPrice">+$650</span></div>
+                    <div class="price-row"><span>Metal Surcharge:</span><span id="metalPrice">+$0</span></div>
+                    <div class="price-row"><span>Engraving:</span><span id="engravePrice">+$50</span></div>
+                    <div class="price-row total"><span>Total Estimate:</span><span id="totalPrice">$2,500</span></div>
+                </div>
+
+                <button class="btn-gold" id="submitCustomBtn" style="width:100%; margin-top:1rem;">✨ REQUEST CUSTOM QUOTE</button>
+                <div id="customFeedback" class="feedback-message" style="display:none;"></div>
+            </div>
+        </div>
+
+        <!-- Gemstone Gallery -->
+        <div class="gem-gallery">
+            <h3 style="text-align:center; margin-bottom:1.5rem;">Choose Your Signature Gemstone</h3>
+            <div class="gem-options">
+                <div class="gem-option" data-gem="diamond" onclick="selectGem('diamond')">
+                    <img src="https://images.pexels.com/photos/1184120/pexels-photo-1184120.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Diamond">
+                    <span>Diamond</span>
+                </div>
+                <div class="gem-option" data-gem="emerald" onclick="selectGem('emerald')">
+                    <img src="https://images.pexels.com/photos/1030192/pexels-photo-1030192.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Emerald">
+                    <span>Emerald</span>
+                </div>
+                <div class="gem-option" data-gem="sapphire" onclick="selectGem('sapphire')">
+                    <img src="https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Sapphire">
+                    <span>Sapphire</span>
+                </div>
+                <div class="gem-option" data-gem="ruby" onclick="selectGem('ruby')">
+                    <img src="https://images.pexels.com/photos/810878/pexels-photo-810878.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Ruby">
+                    <span>Ruby</span>
+                </div>
+                <div class="gem-option" data-gem="amethyst" onclick="selectGem('amethyst')">
+                    <img src="https://images.pexels.com/photos/977264/pexels-photo-977264.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Amethyst">
+                    <span>Amethyst</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- CONTACT PAGE: ZOOM & CLICKABLE -->
     <section id="contact" class="page-section">
@@ -560,6 +881,119 @@
         { name: "EXPERT RESTORATION", icon: "🔧", description: "Precision repair and restoration of heirloom jewelry.", img: "https://images.pexels.com/photos/7217982/pexels-photo-7217982.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" },
         { name: "PRIVATE CONCIERGE", icon: "🥂", description: "Personalized atelier appointments and gem sourcing.", img: "https://images.pexels.com/photos/3822977/pexels-photo-3822977.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" }
     ];
+    // ========== PERSONALIZATION PAGE LOGIC ==========
+function updatePreview() {
+    // Get values
+    const type = document.getElementById('personalizeType').value;
+    const metal = document.getElementById('personalizeMetal').value;
+    const gem = document.getElementById('personalizeGem').value;
+    const size = document.getElementById('personalizeSize').value;
+    const engraving = document.getElementById('personalizeEngraving').value;
+    
+    // Update icon based on type
+    const icons = { ring: '💍', necklace: '📿', bracelet: '📿', earrings: '💎', cufflinks: '👔' };
+    document.getElementById('previewIcon').innerHTML = icons[type] || '💍';
+    
+    // Update name
+    const names = { ring: 'Custom Ring', necklace: 'Pendant Necklace', bracelet: 'Bracelet', earrings: 'Earrings', cufflinks: 'Cufflinks' };
+    document.getElementById('previewName').innerHTML = names[type] || 'Custom Piece';
+    
+    // Metal display names
+    const metalNames = { yellow: '18k Yellow Gold', white: '18k White Gold', rose: '18k Rose Gold', platinum: 'Platinum', silver: 'Sterling Silver' };
+    const gemNames = { diamond: 'Diamond', emerald: 'Emerald', sapphire: 'Sapphire', ruby: 'Ruby', amethyst: 'Amethyst', moissanite: 'Moissanite' };
+    
+    document.getElementById('previewMetal').innerHTML = metalNames[metal];
+    document.getElementById('previewGem').innerHTML = gemNames[gem];
+    document.getElementById('previewSize').innerHTML = `Size ${size}`;
+    
+    // Engraving preview
+    const engravingDiv = document.getElementById('previewEngraving');
+    if (engraving) {
+        engravingDiv.innerHTML = `✍️ "${engraving}"`;
+        engravingDiv.style.display = 'block';
+    } else {
+        engravingDiv.innerHTML = '';
+        engravingDiv.style.display = 'none';
+    }
+    
+    // Calculate price
+    let basePrice = 1800;
+    const metalPrices = { yellow: 0, white: 200, rose: 150, platinum: 500, silver: -300 };
+    const gemPrices = { diamond: 650, emerald: 800, sapphire: 550, ruby: 900, amethyst: 200, moissanite: 300 };
+    
+    let metalSurcharge = metalPrices[metal] || 0;
+    let gemSurcharge = gemPrices[gem] || 650;
+    let engravingCost = engraving.length > 0 ? 50 : 0;
+    
+    let total = basePrice + metalSurcharge + gemSurcharge + engravingCost;
+    
+    document.getElementById('basePrice').innerHTML = `$${basePrice.toLocaleString()}`;
+    document.getElementById('gemPrice').innerHTML = `${gemSurcharge >= 0 ? '+' : '-'}$${Math.abs(gemSurcharge).toLocaleString()}`;
+    document.getElementById('metalPrice').innerHTML = `${metalSurcharge >= 0 ? '+' : '-'}$${Math.abs(metalSurcharge).toLocaleString()}`;
+    document.getElementById('engravePrice').innerHTML = `+$${engravingCost}`;
+    document.getElementById('totalPrice').innerHTML = `$${total.toLocaleString()}`;
+    document.getElementById('previewPrice').innerHTML = `$${total.toLocaleString()}`;
+}
+
+function selectGem(gemType) {
+    const gemMap = { diamond: 'diamond', emerald: 'emerald', sapphire: 'sapphire', ruby: 'ruby', amethyst: 'amethyst' };
+    const selectElement = document.getElementById('personalizeGem');
+    for(let i = 0; i < selectElement.options.length; i++) {
+        if(selectElement.options[i].value === gemMap[gemType]) {
+            selectElement.selectedIndex = i;
+            break;
+        }
+    }
+    updatePreview();
+    
+    // Visual feedback
+    document.querySelectorAll('.gem-option').forEach(opt => opt.classList.remove('selected'));
+    document.querySelector(`.gem-option[data-gem="${gemType}"]`).classList.add('selected');
+}
+
+// Submit customization
+document.getElementById('submitCustomBtn').onclick = function() {
+    const type = document.getElementById('personalizeType').options[document.getElementById('personalizeType').selectedIndex]?.text;
+    const metal = document.getElementById('personalizeMetal').options[document.getElementById('personalizeMetal').selectedIndex]?.text;
+    const gem = document.getElementById('personalizeGem').options[document.getElementById('personalizeGem').selectedIndex]?.text;
+    const size = document.getElementById('personalizeSize').value;
+    const engraving = document.getElementById('personalizeEngraving').value;
+    const notes = document.getElementById('personalizeNotes').value;
+    const total = document.getElementById('totalPrice').innerText;
+    
+    const feedback = document.getElementById('customFeedback');
+    feedback.style.display = 'block';
+    feedback.innerHTML = `✨ Thank you for your custom request! ✨<br><br>
+        <strong>Your Design:</strong> ${type} in ${metal} with ${gem} (Size ${size})<br>
+        ${engraving ? `<strong>Engraving:</strong> "${engraving}"<br>` : ''}
+        ${notes ? `<strong>Notes:</strong> ${notes}<br>` : ''}
+        <strong>Estimated Total:</strong> ${total}<br><br>
+        📞 Our master jeweler will contact you within 24 hours on WhatsApp to finalize your creation!`;
+    
+    setTimeout(() => {
+        feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+};
+
+// Add Personalize link to navigation
+const navLinks = document.querySelector('.nav-links');
+if (navLinks && !document.querySelector('[data-section="personalize"]')) {
+    const newLink = document.createElement('li');
+    newLink.innerHTML = '<a href="#personalize" data-section="personalize">PERSONALIZE</a>';
+    const servicesLink = navLinks.querySelector('[data-section="services"]');
+    if (servicesLink) {
+        servicesLink.parentNode.insertAdjacentElement('afterend', newLink);
+    } else {
+        navLinks.appendChild(newLink);
+    }
+}
+
+// Initialize preview on load
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('personalizeType')) {
+        updatePreview();
+    }
+});
 
     const contactOptions = [
         { type: "phone", icon: "📱", detail: "+254 117 104 787", label: "Call or WhatsApp", action: "tel:+254117104787" },
@@ -603,7 +1037,7 @@
     // 2. Right-click on the image and select "Copy image address" or "Open image in new tab"
     // 3. Copy the image URL (should end with .jpg, .png, etc.)
     // 4. Replace the empty src strings below with that URL
-    const logoUrl = "https://i.pinimg.com/236x/53/b4/5d/53b45dce3ae53999dc710b6e39b73737.jpg";  // PASTE YOUR LOGO IMAGE URL HERE (inside the quotes)
+    const logoUrl = "https://www.pinterest.com/pin/19351473395234161/";  // PASTE YOUR LOGO IMAGE URL HERE (inside the quotes)
     if (logoUrl) {
         document.getElementById('siteLogo').src = logoUrl;
         document.getElementById('footerLogoImg').src = logoUrl;
